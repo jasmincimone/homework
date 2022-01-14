@@ -1,0 +1,22 @@
+const express = require('express');
+const bodyParser = require('body-parser')
+
+const learnerRoute = require('./routes/learnerRoute')
+const greetingRoute = require('./routes/greetingRoute')
+const port = 6000;
+const app = express();
+
+app.use(bodyParser.json())
+
+app.use('/learner', learnerRoute)
+app.use('/greeting', greetingRoute)
+
+app.get('/', (req, res)=>{
+    res.status(200).json({message: "API UP!"})
+})
+
+
+
+app.listen(port, () => {
+    console.log('ONLINE')
+})
