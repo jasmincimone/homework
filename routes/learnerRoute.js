@@ -10,10 +10,10 @@ learnerRoute.get('/', (req, res) => {
 
 //SHOULD ALWAYS RETURN SOMETHING
 learnerRoute.post('/', (req, res) => {
-    let learners = req.body
-    data.push(learners)
+    let learner = req.body
+    data.push(learner)
 
-    res.status(201).json({message: "Sucess!", learner: learners})
+    res.status(201).json({message: "Sucess!", learner: learner})
 })
 
 //URL: localhost:6000/learner/:id

@@ -1,18 +1,16 @@
-const express = require('express')
-
+const express = require('express');
+const magicData = require('../data/magicData')
 const magicRoute = express.Router()
 
 
-magicRoute.get('/', (req,res)=> {
- console.log('Magic 8 Ball')
- res.status(200).json({greeting: "HEY TIPS"})
+magicRoute.get('/', (req, res)=> {
+ res.status(200).json({greeting: "MUST BE MAGIC!!! <3"})
 })
 
-magicRoute.get('/:total/:tipPercentage', (req, res) => {
-    let total = Number(req.params.total)
-    let tipPercentage = Number(req.params.tipPercentage)
-    let tip = Number(total) * Number(tipPercentage)
-    res.status(200).json({message: `Your tip is ${tip}`})
-})
+magicRoute.get('/:question', (req, res)=>{
+    let quotes = magicData[Math.floor(Math.random() * magicData.length)];
+    res.status(200).json({message: quotes})
+});
 
-module.exports = magicRoute
+
+module.exports = magicRoute;
